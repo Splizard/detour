@@ -1,11 +1,13 @@
 #include <dlfcn.h>
 #include "detour.h"
+#ifdef __GLIBC__
 // These are versioned for GLIBC 2002!
 __asm__(".symver dlopen,dlopen@GLIBC_2.2.5");
 __asm__(".symver dlerror,dlerror@GLIBC_2.2.5");
 __asm__(".symver dlsym,dlsym@GLIBC_2.2.5");
 __asm__(".symver dlclose,dlclose@GLIBC_2.2.5");
 __asm__(".symver __libc_start_main,__libc_start_main@GLIBC_2.2.5");
+#endif
 void _ITM_registerTMCloneTable(void) {}
 void _ITM_deregisterTMCloneTable(void) {}
 void __gmon_start__(void) {}
